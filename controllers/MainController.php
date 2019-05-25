@@ -20,14 +20,13 @@ class MainController extends \yii\web\Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->insert();
-            
             return $this->render('add-confirm', ['model' => $model]);
+        } else {
+            return $this->render('index', ['model' => $model]);
         }
-
-        return $this->render('index', ['model' => $model]);
     }
 
-    public function actionSelect($email = null, $phone = null)
+    public function actionSelect()
     {
         $searchModel = new MessageSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->get());
