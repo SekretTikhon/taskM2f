@@ -27,7 +27,7 @@ class MainController extends \yii\web\Controller
         }
     }
 
-    public function actionSelect($email = null, $phone = null)
+    public function actionSelect()
     {
         $searchModel = new MessageSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->get());
