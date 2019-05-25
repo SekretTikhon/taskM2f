@@ -1,17 +1,19 @@
 <?php
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\grid\GridView;
 ?>
-<?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'message') ?>
+<?= Html::a('Delete filter', ['main/select'], ['class' => 'btn btn-primary']) ?>
 
-    <?= $form->field($model, 'email') ?>
-
-    <?= $form->field($model, 'phone') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Send message', ['class' => 'btn btn-primary']) ?>
-    </div>
-
-<?php ActiveForm::end(); ?>
+<?=
+GridView::widget([
+    'dataProvider' => $dataProvider,
+    'filterModel' => $searchModel,
+    'columns' => [
+        ['class' => 'yii\grid\SerialColumn'],
+        'email',
+        'phone',
+        'message',
+    ],
+]); 
+?>
